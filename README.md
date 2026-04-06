@@ -50,10 +50,6 @@ HostGuard/
 
 - JSON: `sample_reports/sample_report.json`
 - HTML: `sample_reports/sample_report.html`
-```bash
-python -m hostguard.main --json-out reports/report.json --html-out reports/report.html
-```markdown
-- Exports audit results to HTML
 
 ## Terminal Run Screenshot
 
