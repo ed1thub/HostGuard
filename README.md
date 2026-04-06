@@ -44,3 +44,7 @@ HostGuard/
 ├── README.md
 ├── requirements.txt
 └── pyproject.toml
+
+## Terminal Run Screenshot
+
+![HostGuard terminal output](screenshots/Terminal output.png)
