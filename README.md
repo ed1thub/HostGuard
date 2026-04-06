@@ -47,4 +47,4 @@ HostGuard/
 
 ## Terminal Run Screenshot
 
-![HostGuard terminal output](screenshots/Terminal output.png)
+![HostGuard terminal output](screenshots/hostguard_run.png)
