@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: hostguard
+Version: 0.1.0
+Summary: Linux security baseline auditor
+Requires-Python: >=3.11

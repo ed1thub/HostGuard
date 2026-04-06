@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-04-06T04:09:06.881742+00:00",
+  "summary": {
+    "total": 6,
+    "pass": 3,
+    "fail": 2,
+    "warn": 1,
+    "error": 0
+  },
+  "results": [
+    {
+      "check_id": "SSH-001",
+      "check_name": "SSH Root Login Disabled",
+      "status": "WARN",
+      "message": "/etc/ssh/sshd_config not found.",
+      "remediation": "Verify SSH server is installed and configuration file exists."
+    },
+    {
+      "check_id": "FW-001",
+      "check_name": "Firewall Enabled",
+      "status": "FAIL",
+      "message": "No active host firewall was detected.",
+      "remediation": "Enable UFW, firewalld, or nftables."
+    },
+    {
+      "check_id": "PWD-001",
+      "check_name": "Password Aging Policy",
+      "status": "FAIL",
+      "message": "PASS_MAX_DAYS is 99999.",
+      "remediation": "Set PASS_MAX_DAYS to 90 or less."
+    },
+    {
+      "check_id": "PWD-001",
+      "check_name": "Password Aging Policy",
+      "status": "PASS",
+      "message": "PASS_WARN_AGE is 7.",
+      "remediation": null
+    },
+    {
+      "check_id": "SVC-001",
+      "check_name": "Legacy Insecure Services Disabled",
+      "status": "PASS",
+      "message": "No active insecure legacy services detected.",
+      "remediation": null
+    },
+    {
+      "check_id": "PERM-001",
+      "check_name": "No World-Writable Files Under /etc",
+      "status": "PASS",
+      "message": "No world-writable regular files found under /etc.",
+      "remediation": null
+    }
+  ]
+}
