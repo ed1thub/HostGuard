@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HostGuard Security Audit Report</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --panel: #111827;
+            --panel-2: #1f2937;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --border: #374151;
+            --pass: #22c55e;
+            --fail: #ef4444;
+            --warn: #f59e0b;
+            --error: #a855f7;
+            --unknown: #6b7280;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 32px 20px 48px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #111827, #1e293b);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            margin: 0 0 8px;
+            font-size: 2rem;
+        }
+
+        .hero p {
+            margin: 6px 0;
+            color: var(--muted);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .summary-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 18px;
+        }
+
+        .summary-card h2 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .summary-card p {
+            margin: 8px 0 0;
+            color: var(--muted);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+        }
+
+        .results-section {
+            margin-top: 12px;
+        }
+
+        .results-section h2 {
+            margin-bottom: 16px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .result-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 18px;
+        }
+
+        .result-card h3 {
+            margin: 12px 0 10px;
+            font-size: 1.05rem;
+        }
+
+        .result-card p {
+            margin: 0 0 12px;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .check-id {
+            font-size: 0.9rem;
+            color: var(--muted);
+            font-weight: bold;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .status-pass { background: var(--pass); }
+        .status-fail { background: var(--fail); }
+        .status-warn { background: var(--warn); color: #111827; }
+        .status-error { background: var(--error); }
+        .status-unknown { background: var(--unknown); }
+
+        .remediation {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .footer {
+            margin-top: 28px;
+            color: var(--muted);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="hero">
+            <h1>HostGuard Security Audit Report</h1>
+            <p>Generated at: 2026-04-06T15:10:15.594096+00:00</p>
+            <p>Linux security baseline audit results for common hardening checks.</p>
+        </section>
+
+        <section class="summary-grid">
+            <div class="summary-card">
+                <h2>6</h2>
+                <p>Total Checks</p>
+            </div>
+            <div class="summary-card">
+                <h2>3</h2>
+                <p>Pass</p>
+            </div>
+            <div class="summary-card">
+                <h2>2</h2>
+                <p>Fail</p>
+            </div>
+            <div class="summary-card">
+                <h2>1</h2>
+                <p>Warn</p>
+            </div>
+            <div class="summary-card">
+                <h2>0</h2>
+                <p>Error</p>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <h2>Detailed Results</h2>
+            <div class="results-grid">
+                
+    <div class="result-card">
+        <div class="result-header">
+            <span class="check-id">SSH-001</span>
+            <span class="status-badge status-warn">WARN</span>
+        </div>
+        <h3>SSH Root Login Disabled</h3>
+        <p>/etc/ssh/sshd_config not found.</p>
+        
+        <div class="remediation">
+            <strong>Remediation:</strong> Verify SSH server is installed and configuration file exists.
+        </div>
+        
+    </div>
+    
+
+    <div class="result-card">
+        <div class="result-header">
+            <span class="check-id">FW-001</span>
+            <span class="status-badge status-fail">FAIL</span>
+        </div>
+        <h3>Firewall Enabled</h3>
+        <p>No active host firewall was detected.</p>
+        
+        <div class="remediation">
+            <strong>Remediation:</strong> Enable UFW, firewalld, or nftables.
+        </div>
+        
+    </div>
+    
+
+    <div class="result-card">
+        <div class="result-header">
+            <span class="check-id">PWD-001</span>
+            <span class="status-badge status-fail">FAIL</span>
+        </div>
+        <h3>Password Aging Policy</h3>
+        <p>PASS_MAX_DAYS is 99999.</p>
+        
+        <div class="remediation">
+            <strong>Remediation:</strong> Set PASS_MAX_DAYS to 90 or less.
+        </div>
+        
+    </div>
+    
+
+    <div class="result-card">
+        <div class="result-header">
+            <span class="check-id">PWD-001</span>
+            <span class="status-badge status-pass">PASS</span>
+        </div>
+        <h3>Password Aging Policy</h3>
+        <p>PASS_WARN_AGE is 7.</p>
+        
+    </div>
+    
+
+    <div class="result-card">
+        <div class="result-header">
+            <span class="check-id">SVC-001</span>
+            <span class="status-badge status-pass">PASS</span>
+        </div>
+        <h3>Legacy Insecure Services Disabled</h3>
+        <p>No active insecure legacy services detected.</p>
+        
+    </div>
+    
+
+    <div class="result-card">
+        <div class="result-header">
+            <span class="check-id">PERM-001</span>
+            <span class="status-badge status-pass">PASS</span>
+        </div>
+        <h3>No World-Writable Files Under /etc</h3>
+        <p>No world-writable regular files found under /etc.</p>
+        
+    </div>
+    
+            </div>
+        </section>
+
+        <div class="footer">
+            Built with HostGuard
+        </div>
+    </div>
+</body>
+</html>

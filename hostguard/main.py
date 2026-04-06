@@ -7,6 +7,7 @@ from hostguard.checks.permissions_checks import WorldWritableEtcCheck
 from hostguard.checks.service_checks import LegacyServicesCheck
 from hostguard.checks.ssh_checks import SSHRootLoginCheck
 from hostguard.models import CheckResult
+from hostguard.reporting.html_report import write_html_report
 from hostguard.reporting.json_report import write_json_report
 
 
@@ -53,6 +54,10 @@ def main() -> int:
         "--json-out",
         help="Path to save JSON report, for example reports/report.json",
     )
+    parser.add_argument(
+        "--html-out",
+        help="Path to save HTML report, for example reports/report.html",
+    )
     args = parser.parse_args()
 
     results = run_all_checks()
@@ -61,6 +66,10 @@ def main() -> int:
     if args.json_out:
         write_json_report(results, args.json_out)
         print(f"\nJSON report written to: {args.json_out}")
+
+    if args.html_out:
+        write_html_report(results, args.html_out)
+        print(f"HTML report written to: {args.html_out}")
 
     has_failures = any(result.status == "FAIL" for result in results)
     return 1 if has_failures else 0
