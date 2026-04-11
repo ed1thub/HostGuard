@@ -71,8 +71,8 @@ def main() -> int:
         write_html_report(results, args.html_out)
         print(f"HTML report written to: {args.html_out}")
 
-    has_failures = any(result.status == "FAIL" for result in results)
-    return 1 if has_failures else 0
+    has_failures_or_errors = any(result.status in {"FAIL", "ERROR"} for result in results)
+    return 1 if has_failures_or_errors else 0
 
 
 if __name__ == "__main__":

@@ -1,22 +1,31 @@
 # HostGuard
 
-HostGuard is a Python-based Linux security baseline auditing tool that checks a host for common hardening issues and generates structured security audit results.
+HostGuard is a student-built Python project for auditing basic Linux security settings and presenting the results in a clear, structured way. It was created as a cybersecurity portfolio piece to show practical work with system hardening, configuration review, and Python automation.
 
-## Why I built this
+## Portfolio Note
 
-I built HostGuard as a cybersecurity portfolio project to demonstrate practical Linux hardening, baseline auditing, secure configuration review, and Python automation skills.
+This repository is intentionally lightweight and educational. It is meant to demonstrate how a small auditing tool can be organized, tested, and reported, not to replace a full enterprise security scanner or compliance framework.
 
-The goal was to create a lightweight tool that can inspect a Linux system and clearly report whether key security settings pass or fail basic baseline checks.
+## What It Does
+
+HostGuard checks a Linux host for common baseline issues and generates human-readable and machine-readable reports.
+
+It currently checks:
+
+- SSH root login status
+- Host firewall availability
+- Password aging policy
+- Legacy insecure services
+- World-writable files under `/etc`
 
 ## Features
 
-- Checks whether SSH root login is disabled
-- Detects whether a host firewall is active
-- Reviews password aging policy
-- Detects active legacy insecure services
-- Flags world-writable files under `/etc`
-- Exports audit results to JSON
-- Uses a modular check-based architecture for easy extension
+- Modular check-based architecture
+- Console output for quick review
+- JSON report generation
+- HTML report generation
+- Simple dataclass model for results
+- Basic automated tests
 
 ## Current Checks
 
@@ -24,9 +33,27 @@ The goal was to create a lightweight tool that can inspect a Linux system and cl
 |---|---|---|
 | SSH-001 | SSH Root Login Disabled | Verifies whether `PermitRootLogin` is disabled |
 | FW-001 | Firewall Enabled | Detects whether UFW, firewalld, or nftables is active |
-| PWD-001 | Password Aging Policy | Reviews `PASS_MAX_DAYS` and `PASS_WARN_AGE` |
+| PWD-001 | Password Aging Policy | Reviews `PASS_MAX_DAYS`, `PASS_MIN_DAYS`, and `PASS_WARN_AGE` |
 | SVC-001 | Legacy Insecure Services Disabled | Detects insecure legacy services such as telnet |
 | PERM-001 | No World-Writable Files Under `/etc` | Flags risky file permissions under `/etc` |
+
+## Example Output
+
+Sample reports are included so viewers can see what the tool produces without running it locally:
+
+- [sample_report.json](sample_reports/sample_report.json)
+- [sample_report.html](sample_reports/sample_report.html)
+
+## Running Locally
+
+The project expects Python 3.11 or newer.
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python -m hostguard.main --json-out reports/report.json --html-out reports/report.html
+```
 
 ## Project Structure
 
@@ -46,11 +73,10 @@ HostGuard/
 └── pyproject.toml
 ```
 
-## Example Reports
+## License
 
-- JSON: `sample_reports/sample_report.json`
-- HTML: `sample_reports/sample_report.html`
+HostGuard is released under the MIT License. See [LICENSE](LICENSE) for the full text.
 
-## Terminal Run Screenshot
+## Screenshot
 
 ![HostGuard terminal output](screenshots/hostguard_run.png)

@@ -226,7 +226,7 @@ def write_html_report(results: list[CheckResult], output_path: str) -> None:
         <section class="summary-grid">
             <div class="summary-card">
                 <h2>{summary["total"]}</h2>
-                <p>Total Checks</p>
+                <p>Total Results</p>
             </div>
             <div class="summary-card">
                 <h2>{summary["pass"]}</h2>

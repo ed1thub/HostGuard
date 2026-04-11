@@ -76,6 +76,36 @@ class PasswordPolicyCheck(BaseCheck):
                     )
                 )
 
+            min_days = values.get("PASS_MIN_DAYS")
+            if min_days is None:
+                results.append(
+                    self.result(
+                        "WARN",
+                        "PASS_MIN_DAYS is not set.",
+                        "Set PASS_MIN_DAYS to at least 1.",
+                    )
+                )
+            else:
+                try:
+                    if int(min_days) >= 1:
+                        results.append(self.result("PASS", f"PASS_MIN_DAYS is {min_days}."))
+                    else:
+                        results.append(
+                            self.result(
+                                "FAIL",
+                                f"PASS_MIN_DAYS is {min_days}.",
+                                "Set PASS_MIN_DAYS to at least 1.",
+                            )
+                        )
+                except ValueError:
+                    results.append(
+                        self.result(
+                            "ERROR",
+                            f"PASS_MIN_DAYS is not numeric: {min_days}",
+                            "Correct the value in /etc/login.defs.",
+                        )
+                    )
+
         warn_age = values.get("PASS_WARN_AGE")
         if warn_age is None:
             results.append(

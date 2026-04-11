@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "hostguard"
 version = "0.1.0"
-description = "Linux security baseline auditor"
+description = "Student portfolio project for Linux security baseline auditing"
 requires-python = ">=3.11"
 
 [tool.setuptools.packages.find]

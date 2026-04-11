@@ -42,6 +42,7 @@ class SSHRootLoginCheck(BaseCheck):
             parts = line.split()
             if len(parts) >= 2 and parts[0].lower() == "permitrootlogin":
                 permit_root_login = parts[1].lower()
+                break
 
         if permit_root_login is None:
             return [
